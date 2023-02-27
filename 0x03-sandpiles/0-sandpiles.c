@@ -7,21 +7,25 @@
  */
 static void print_grid(int grid[3][3])
 {
-    int i, j;
+	int i, j;
 
-    for (i = 0; i < 3; i++)
-    {
-        for (j = 0; j < 3; j++)
-        {
-            if (j)
-                printf(" ");
-            printf("%d", grid[i][j]);
-        }
-        printf("\n");
-    }
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			if (j)
+				printf(" ");
+			printf("%d", grid[i][j]);
+		}
+		printf("\n");
+	}
 }
 
-
+/**
+ * is_unstable_grid - Determines whether the grid is unstable or not
+ * @grid: The grid to check for stability
+ * Return: void
+*/
 int is_unstable_grid(int grid[3][3])
 {
 	int row = 0, col = 0;
@@ -29,10 +33,16 @@ int is_unstable_grid(int grid[3][3])
 	for (; row < 3; row++)
 		for (col = 0; col < 3; col++)
 			if (grid[row][col] > 3)
-				return true;
+				return (true);
 
-	return false;
+	return (false);
 }
+/**
+ * sum_grids - Add two grids together
+ * @dest: The first grid  to add, stores the result
+ * @adding: The second grid that we are adding
+ * Return: void
+*/
 
 void sum_grids(int dest[3][3], int adding[3][3])
 {
@@ -42,7 +52,11 @@ void sum_grids(int dest[3][3], int adding[3][3])
 		for (col = 0; col < 3; col++)
 			dest[row][col] += adding[row][col];
 }
-
+/**
+ * crumble_grid - Topples the grains of sand in the grid
+ * @grid: The grid to redistribute
+ * Return: void
+*/
 
 void crumble_grid(int grid[3][3])
 {
@@ -78,12 +92,17 @@ void crumble_grid(int grid[3][3])
 	sum_grids(grid, temp_grid);
 }
 
-
+/**
+ * sandpiles_sum - Sums two grids and prints each unstable grid until stable
+ * @grid1: The first grid
+ * @grid2: The second grid
+ * Return: void
+*/
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
 	int limit = 0;
-	sum_grids(grid1, grid2);
 
+	sum_grids(grid1, grid2);
 	while (is_unstable_grid(grid1))
 	{
 		printf("=\n");
