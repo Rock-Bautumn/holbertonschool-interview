@@ -1,4 +1,4 @@
-#!/usr/bin python3
+#!/usr/bin/python3
 """This script finds the lowest number of operations (see readme)"""
 
 def minOperations(n):
